@@ -115,7 +115,7 @@ export default class Core {
   }
 
   static setWindowIcon(image: Image): void {
-    raylib.symbols.SetWindowIcon(image.getData());
+    raylib.symbols.SetWindowIcon(image.data);
   }
 
   static setWindowTitle(title: string): void {

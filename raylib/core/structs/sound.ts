@@ -8,24 +8,4 @@ export default class Sound {
     this.stream = stream;
     this.frameCount = frameCount;
   }
-
-  toString(): string {
-    return `Sound stream=${this.stream.toString()} frameCount=${this.frameCount}`;
-  }
-
-  getStream(): AudioStream {
-    return this.stream;
-  }
-
-  setStream(newStream: AudioStream): void {
-    this.stream = newStream;
-  }
-
-  getFrameCount(): number {
-    return this.frameCount;
-  }
-
-  setFrameCount(newFrameCount: number): void {
-    this.frameCount = newFrameCount;
-  }
 }

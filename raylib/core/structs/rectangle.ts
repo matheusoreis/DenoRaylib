@@ -19,40 +19,4 @@ export default class Rectangle {
       this.height,
     ]).buffer;
   }
-
-  toString(): string {
-    return `Rectangle x=${this.x} y=${this.y} width=${this.width} height=${this.height}`;
-  }
-
-  getX(): number {
-    return this.x;
-  }
-
-  setX(newX: number): void {
-    this.x = newX;
-  }
-
-  getY(): number {
-    return this.y;
-  }
-
-  setY(newY: number): void {
-    this.y = newY;
-  }
-
-  getWidth(): number {
-    return this.width;
-  }
-
-  setWidth(newWidth: number): void {
-    this.width = newWidth;
-  }
-
-  getHeight(): number {
-    return this.height;
-  }
-
-  setHeight(newHeight: number): void {
-    this.height = newHeight;
-  }
 }

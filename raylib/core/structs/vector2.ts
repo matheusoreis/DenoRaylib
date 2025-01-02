@@ -11,26 +11,6 @@ export default class Vector2 {
     return new Float32Array([this.x, this.y]).buffer;
   }
 
-  toString(): string {
-    return `Vector2 x=${this.x} y=${this.y}`;
-  }
-
-  getX(): number {
-    return this.x;
-  }
-
-  setX(newX: number): void {
-    this.x = newX;
-  }
-
-  getY(): number {
-    return this.y;
-  }
-
-  setY(newY: number): void {
-    this.y = newY;
-  }
-
   static fromBuffer(buffer: Uint8Array): Vector2 {
     const dataView = new DataView(buffer.buffer);
 
