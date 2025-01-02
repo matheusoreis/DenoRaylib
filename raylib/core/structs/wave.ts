@@ -1,21 +1,27 @@
+import { raylib } from "../bindings.ts";
+
 export default class Wave {
-  frameCount: number;
-  sampleRate: number;
-  sampleSize: number;
-  channels: number;
-  data: ArrayBuffer;
+  buffer: ArrayBuffer;
 
   constructor(
-    frameCount: number,
-    sampleRate: number,
-    sampleSize: number,
-    channels: number,
-    data: ArrayBuffer,
+    fileName: string,
   ) {
-    this.frameCount = frameCount;
-    this.sampleRate = sampleRate;
-    this.sampleSize = sampleSize;
-    this.channels = channels;
-    this.data = data;
+    const encode = new TextEncoder();
+    const fileNameBuffer = encode.encode(fileName + "\0");
+
+    this.buffer = raylib.symbols.LoadWave(fileNameBuffer);
+  }
+
+  isReady(): boolean {
+    return !!raylib.symbols.IsWaveReady(this.buffer);
+  }
+
+  unload(): void {
+    raylib.symbols.UnloadWave(this.buffer);
+  }
+
+  get channels(): number {
+    const view = new DataView(this.buffer);
+    return view.getInt32(12, true);
   }
 }

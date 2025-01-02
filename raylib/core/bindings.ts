@@ -1,5 +1,6 @@
 import { dlopen } from "https://deno.land/x/plug@1.0.3/mod.ts";
 import {
+  audioStream,
   buffer,
   camera2D,
   color,
@@ -7,12 +8,13 @@ import {
   f64,
   i32,
   image,
+  pointer,
   rectangle,
   u32,
   u8,
   vector2,
   voidType,
-} from "../types.ts";
+} from "../binding-types.ts";
 
 export const raylib = await dlopen({
   name: "raylib",
@@ -325,5 +327,185 @@ export const raylib = await dlopen({
   CheckCollisionPointRec: {
     parameters: [vector2, rectangle],
     result: u8,
+  },
+
+  InitAudioDevice: {
+    parameters: [],
+    result: voidType,
+  },
+
+  CloseAudioDevice: {
+    parameters: [],
+    result: voidType,
+  },
+
+  LoadWave: {
+    parameters: [buffer],
+    result: audioStream,
+  },
+
+  UnloadWave: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  IsWaveReady: {
+    parameters: [audioStream],
+    result: u8,
+  },
+
+  LoadSound: {
+    parameters: [buffer],
+    result: audioStream,
+  },
+
+  UnloadSound: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  PlaySound: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  PauseSound: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  ResumeSound: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  StopSound: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  UpdateSound: {
+    parameters: [audioStream, buffer, i32],
+    result: voidType,
+  },
+
+  IsSoundPlaying: {
+    parameters: [audioStream],
+    result: u8,
+  },
+
+  SetSoundVolume: {
+    parameters: [audioStream, f32],
+    result: voidType,
+  },
+
+  SetSoundPitch: {
+    parameters: [audioStream, f32],
+    result: voidType,
+  },
+
+  LoadMusicStream: {
+    parameters: [buffer],
+    result: audioStream,
+  },
+
+  UnloadMusicStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  PlayMusicStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  PauseMusicStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  ResumeMusicStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  StopMusicStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  UpdateMusicStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  IsMusicStreamPlaying: {
+    parameters: [audioStream],
+    result: u8,
+  },
+
+  SetMusicVolume: {
+    parameters: [audioStream, f32],
+    result: voidType,
+  },
+
+  SetMusicPitch: {
+    parameters: [audioStream, f32],
+    result: voidType,
+  },
+
+  IsAudioStreamReady: {
+    parameters: [audioStream],
+    result: u8,
+  },
+
+  LoadAudioStream: {
+    parameters: [u32, u32, u32],
+    result: audioStream,
+  },
+
+  UnloadAudioStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  PlayAudioStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  PauseAudioStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  ResumeAudioStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  StopAudioStream: {
+    parameters: [audioStream],
+    result: voidType,
+  },
+
+  UpdateAudioStream: {
+    parameters: [audioStream, pointer, i32],
+    result: voidType,
+  },
+
+  IsAudioStreamPlaying: {
+    parameters: [audioStream],
+    result: u8,
+  },
+
+  SetAudioStreamVolume: {
+    parameters: [audioStream, f32],
+    result: voidType,
+  },
+
+  SetAudioStreamPitch: {
+    parameters: [audioStream, f32],
+    result: voidType,
   },
 });

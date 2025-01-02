@@ -381,4 +381,12 @@ export default class Core {
       rec.buffer(),
     );
   }
+
+  static initAudioDevice(): void {
+    raylib.symbols.InitAudioDevice();
+  }
+
+  static closeAudioDevice(): void {
+    raylib.symbols.CloseAudioDevice();
+  }
 }
