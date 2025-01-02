@@ -2,6 +2,7 @@ import { RAYWHITE, RED } from "./raylib/core/colors.ts";
 import Core from "./raylib/core/functions.ts";
 import Music from "./raylib/core/structs/music.ts";
 import Rectangle from "./raylib/core/structs/rectangle.ts";
+import Sound from "./raylib/core/structs/sound.ts";
 import Vector2 from "./raylib/core/structs/vector2.ts";
 
 function main() {
@@ -20,6 +21,8 @@ function main() {
 
   const music = new Music("star.wav");
   music.play();
+
+  let volume = 0.5;
 
   while (!Core.windowShouldClose()) {
     Core.beginDrawing();
@@ -42,6 +45,16 @@ function main() {
       } else {
         music.resume();
       }
+    }
+
+    if (Core.isKeyPressed("pageUp")) {
+      volume = Math.min(volume + 0.1, 1.0);
+      music.setVolume(volume);
+    }
+
+    if (Core.isKeyPressed("pageDown")) {
+      volume = Math.max(volume - 0.1, 0.0);
+      music.setVolume(volume);
     }
 
     music.update();

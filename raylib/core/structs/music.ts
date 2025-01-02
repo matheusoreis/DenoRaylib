@@ -1,11 +1,13 @@
 import { raylib } from "../bindings.ts";
 
 export default class Music {
-  music: any;
+  music: ArrayBuffer;
 
   constructor(fileName: string) {
     const encode = new TextEncoder();
     const fileNameBuffer = encode.encode(fileName + "\0");
+
+    console.log(raylib.symbols.LoadMusicStream(fileNameBuffer));
 
     this.music = raylib.symbols.LoadMusicStream(fileNameBuffer);
   }
