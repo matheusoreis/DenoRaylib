@@ -276,8 +276,8 @@ export default class Core {
     raylib.symbols.OpenURL(urlBuffer);
   }
 
-  static isKeyPressed(key: number): boolean {
-    return !!raylib.symbols.IsKeyPressed(key);
+  static isKeyPressed(key: KeyboardKey): boolean {
+    return !!raylib.symbols.IsKeyPressed(keyboardKey[key]);
   }
 
   static isKeyDown(key: KeyboardKey): boolean {

@@ -78,6 +78,6 @@ export const sound = {
 export type sound = typeof sound;
 
 export const music = {
-  struct: [audioStream, u32, u8, u32, pointer],
+  struct: [audioStream, u32, u8, i32, pointer],
 } as const;
 export type music = typeof music;

@@ -31,7 +31,11 @@ export default class Sound {
   }
 
   update(data: Float32Array): void {
-    raylib.symbols.UpdateSound(this.buffer, data, data.length);
+    raylib.symbols.UpdateSound(
+      this.buffer,
+      Deno.UnsafePointer.of(data),
+      data.length,
+    );
   }
 
   isPlaying(): boolean {

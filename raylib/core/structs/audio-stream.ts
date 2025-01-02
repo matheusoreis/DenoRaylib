@@ -11,10 +11,6 @@ export default class AudioStream {
     );
   }
 
-  isReady(): boolean {
-    return !!raylib.symbols.IsAudioStreamReady(this.buffer);
-  }
-
   unload(): void {
     raylib.symbols.UnloadAudioStream(this.buffer);
   }

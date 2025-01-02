@@ -12,10 +12,6 @@ export default class Wave {
     this.buffer = raylib.symbols.LoadWave(fileNameBuffer);
   }
 
-  isReady(): boolean {
-    return !!raylib.symbols.IsWaveReady(this.buffer);
-  }
-
   unload(): void {
     raylib.symbols.UnloadWave(this.buffer);
   }

@@ -1,5 +1,6 @@
 import { RAYWHITE, RED } from "./raylib/core/colors.ts";
 import Core from "./raylib/core/functions.ts";
+import Music from "./raylib/core/structs/music.ts";
 import Rectangle from "./raylib/core/structs/rectangle.ts";
 import Vector2 from "./raylib/core/structs/vector2.ts";
 
@@ -11,8 +12,14 @@ function main() {
   Core.setTargetFPS(60);
   Core.setWindowMinSize(800, 600);
 
+  // Inicializar o dispositivo de áudio
+  Core.initAudioDevice();
+
   let isFullscreen = false;
   let currentMonitor = 0;
+
+  const music = new Music("star.wav");
+  music.play();
 
   while (!Core.windowShouldClose()) {
     Core.beginDrawing();
@@ -28,6 +35,16 @@ function main() {
       Core.setWindowPosition(0, 0);
       Core.toggleFullscreen();
     }
+
+    if (Core.isKeyPressed("p")) {
+      if (music.isPlaying()) {
+        music.pause();
+      } else {
+        music.resume();
+      }
+    }
+
+    music.update();
 
     const mouseX = Core.getMouseX();
     const mouseY = Core.getMouseY();
@@ -45,6 +62,11 @@ function main() {
 
     Core.endDrawing();
   }
+
+  music.unload();
+
+  // Fechar o dispositivo de áudio
+  Core.closeAudioDevice();
 }
 
 main();

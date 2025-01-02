@@ -8,6 +8,7 @@ import {
   f64,
   i32,
   image,
+  music,
   pointer,
   rectangle,
   u32,
@@ -15,6 +16,7 @@ import {
   vector2,
   voidType,
 } from "../binding-types.ts";
+import { sound } from "../binding-types.ts";
 
 export const raylib = await dlopen({
   name: "raylib",
@@ -349,114 +351,104 @@ export const raylib = await dlopen({
     result: voidType,
   },
 
-  IsWaveReady: {
-    parameters: [audioStream],
-    result: u8,
-  },
-
   LoadSound: {
     parameters: [buffer],
-    result: audioStream,
+    result: sound,
   },
 
   UnloadSound: {
-    parameters: [audioStream],
+    parameters: [sound],
     result: voidType,
   },
 
   PlaySound: {
-    parameters: [audioStream],
+    parameters: [sound],
     result: voidType,
   },
 
   PauseSound: {
-    parameters: [audioStream],
+    parameters: [sound],
     result: voidType,
   },
 
   ResumeSound: {
-    parameters: [audioStream],
+    parameters: [sound],
     result: voidType,
   },
 
   StopSound: {
-    parameters: [audioStream],
+    parameters: [sound],
     result: voidType,
   },
 
   UpdateSound: {
-    parameters: [audioStream, buffer, i32],
+    parameters: [sound, pointer, i32],
     result: voidType,
   },
 
   IsSoundPlaying: {
-    parameters: [audioStream],
+    parameters: [sound],
     result: u8,
   },
 
   SetSoundVolume: {
-    parameters: [audioStream, f32],
+    parameters: [sound, f32],
     result: voidType,
   },
 
   SetSoundPitch: {
-    parameters: [audioStream, f32],
+    parameters: [sound, f32],
     result: voidType,
   },
 
   LoadMusicStream: {
     parameters: [buffer],
-    result: audioStream,
+    result: music,
   },
 
   UnloadMusicStream: {
-    parameters: [audioStream],
+    parameters: [music],
     result: voidType,
   },
 
   PlayMusicStream: {
-    parameters: [audioStream],
+    parameters: [music],
     result: voidType,
   },
 
   PauseMusicStream: {
-    parameters: [audioStream],
+    parameters: [music],
     result: voidType,
   },
 
   ResumeMusicStream: {
-    parameters: [audioStream],
+    parameters: [music],
     result: voidType,
   },
 
   StopMusicStream: {
-    parameters: [audioStream],
+    parameters: [music],
     result: voidType,
   },
 
   UpdateMusicStream: {
-    parameters: [audioStream],
+    parameters: [music],
     result: voidType,
   },
 
   IsMusicStreamPlaying: {
-    parameters: [audioStream],
+    parameters: [music],
     result: u8,
   },
 
   SetMusicVolume: {
-    parameters: [audioStream, f32],
+    parameters: [music, f32],
     result: voidType,
   },
 
   SetMusicPitch: {
-    parameters: [audioStream, f32],
+    parameters: [music, f32],
     result: voidType,
-  },
-
-  IsAudioStreamReady: {
-    parameters: [audioStream],
-    result: u8,
   },
 
   LoadAudioStream: {
